@@ -13,11 +13,11 @@ connectDB()
     console.log(`Server is running ☀️ ,at port ${process.env.PORT}`);
   })
 
-  // startSMTPServer()
+  startSMTPServer()
 
-  // setTimeout(()=>{
-  //   sendTestEmail().catch(console.error);
-  // },1000)
+  setTimeout(()=>{
+    sendTestEmail().catch(console.error);
+  },1000)
 })
 .catch((err)=>{
   console.log("MongoDB connection error !!! ",err);
