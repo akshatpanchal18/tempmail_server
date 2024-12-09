@@ -16,7 +16,7 @@ async function sendTestEmail() {
   let info = await transporter.sendMail({
     from: '"Test User" test@example.com', // sender address
     // to: 'recipient@example.com',            // list of receivers
-    to: 'akshat@temp.com',            // list of receivers
+    to: 'akki@temp.com',            // list of receivers
     subject: 'Hello ',                     // Subject line
     text: 'Hello !! this is Test email',                    // plain text body              // html body
   });
