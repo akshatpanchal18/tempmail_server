@@ -47,8 +47,8 @@ console.log("OTP that sent in email:", OTP);
     });
     const options = {
       httpOnly: true,
-      // secure: true,
-      secure: false,
+      secure: true,
+      // secure: false,
       // sameSite: 'None',
     };
 
