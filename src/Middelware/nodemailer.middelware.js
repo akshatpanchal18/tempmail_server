@@ -49,7 +49,7 @@ console.log("OTP that sent in email:", OTP);
       httpOnly: true,
       // secure: true,
       secure: false,
-      sameSite: 'None',
+      // sameSite: 'None',
     };
 
     console.log(`Email sent to: ${email} successfully ${OTP}`);

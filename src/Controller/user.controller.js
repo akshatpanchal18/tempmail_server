@@ -130,7 +130,7 @@ const loginUser = asyncHandeler(async (req, res) => {
   const options = {
     httpOnly: true,
     // secure: true,
-    sameSite: 'None'
+    // sameSite: 'None'
   };
   // console.log("User logged in success");
   
@@ -167,7 +167,7 @@ const logoutUser = asyncHandeler(async (req, res) => {
   const options = {
     httpOnly: true,
     // secure: true,
-    sameSite: 'None'
+    // sameSite: 'None'
   };
 
   return res
