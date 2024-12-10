@@ -94,7 +94,8 @@ const parseEmail = (rawEmail) => {
 
 // Start SMTP server on port 2525
 export const startSMTPServer = () => {
-  smtpServer.listen(2525, () => {
-    console.log('SMTP server running on port 2525');
+  const PORT = process.env.SMTP_PORT || 587
+  smtpServer.listen(PORT,'0.0.0.0', () => {
+    console.log(`SMTP server running on port ${PORT}`);
   });
 };

@@ -4,7 +4,7 @@ import apiError from "../Utils/apiError.js";
 
 const transporter = Nodemailer.createTransport({
   host: "smtp.gmail.com", // Use Gmail as the service
-  port: 465,
+  port: process.env.SMTP_PORT_GMAIL,
   secure: true,
   auth: {
     user: process.env.GAMIL_USER,
@@ -47,8 +47,8 @@ console.log("OTP that sent in email:", OTP);
     });
     const options = {
       httpOnly: true,
-      // secure: true,
-      secure: false,
+      secure: true,
+      // secure: false,
       // sameSite: 'None',
     };
 

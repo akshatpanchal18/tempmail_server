@@ -5,7 +5,7 @@ async function sendTestEmail() {
   // Create a transporter object using the specified SMTP transport
   let transporter = nodemailer.createTransport({
     host: 'localhost', // Your SMTP server address
-    port: 2525,        // Your SMTP port (set to 2525)
+    port: 25,        // Your SMTP port (set to 2525)
     secure: false,
     tls: {
         rejectUnauthorized: false, // Ignore self-signed certificate
