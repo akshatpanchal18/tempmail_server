@@ -6,8 +6,8 @@ const app = express()
 
 // cors for middelwares
 app.use(cors({
-    // origin:process.env.CORS_ORIGIN,
-    origin: "https://tempmail-frontend.netlify.app/", 
+    origin:process.env.CORS_ORIGIN,
+    // origin: "https://tempmail-frontend.netlify.app/", 
     credentials:true,
 
 }))
