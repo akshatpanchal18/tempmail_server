@@ -7,7 +7,7 @@ import { Tempmail } from "../Models/email.models.js";
 
 const addMessageToInbox = asyncHandler(async (req, res) => {
 // console.log(req.body);
-// console.log(req.body?.recipient);
+console.log(req.body?.recipient);
 
     // const eventData = req.body;
     // const eventData = req.body['event-data'];
