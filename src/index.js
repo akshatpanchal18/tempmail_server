@@ -13,7 +13,7 @@ connectDB()
     console.log(`Server is running ☀️ ,at port ${process.env.PORT}`);
   })
 
-  startSMTPServer()
+  // startSMTPServer()
 
   // setTimeout(()=>{
   //   sendTestEmail().catch(console.error);
