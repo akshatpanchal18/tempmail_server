@@ -10,11 +10,13 @@ console.log(req.body);
 
     // const eventData = req.body;
     const eventData = req.body['event-data'];
-    const { recipient, sender, "subject":sub='', 'body-plain': body='' } = eventData;
-    // const {mailid, text, from, subject } = req.body;
-    // const mailid = req.params.mailid.trim(); // Get mailid from route params
+    const { recipient='', sender='', "subject":sub='', 'body-plain': body='' } = eventData;
+
+    if ([recipient, sender, sub,body].some((field) => !field?.trim())) {
+        throw new apiError(400, "All fields are required");
+    }
+    
     const findEmail = await Tempmail.find({"tempEmail":recipient})
-    // const mailid = findEmail.inbox;
     const mailid = findEmail.length > 0 ? findEmail[0]._id : null
     const from = sender||"null";
     const subject = sub||"null";
