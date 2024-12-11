@@ -6,15 +6,17 @@ import mongoose, { isValidObjectId } from "mongoose";
 import { Tempmail } from "../Models/email.models.js";
 
 const addMessageToInbox = asyncHandler(async (req, res) => {
-    const { recipient, sender, "subject":sub, 'body-plain': body } = req.body;
+
+    const eventData = req.body['event-data'];
+    const { recipient, sender, "subject":sub, 'body-plain': body } = eventData;
     // const {mailid, text, from, subject } = req.body;
     // const mailid = req.params.mailid.trim(); // Get mailid from route params
     const findEmail = await Tempmail.find({"tempEmail":recipient})
     // const mailid = findEmail.inbox;
     const mailid = findEmail.length > 0 ? findEmail[0]._id : null
-    const from = sender;
-    const subject = sub;
-    const text = body;
+    const from = sender||"null";
+    const subject = sub||"null";
+    const text = body||"null";
 console.log(mailid);
 
     console.log(`Received email from ${from} to ${recipient} with subject: ${subject}`);
