@@ -9,7 +9,7 @@ const addMessageToInbox = asyncHandler(async (req, res) => {
 console.log(req.body);
 
     // const eventData = req.body;
-    const eventData = req.body;
+    const eventData = req.body['event-data'];
     const { recipient, sender, "subject":sub, 'body-plain': body } = eventData;
     // const {mailid, text, from, subject } = req.body;
     // const mailid = req.params.mailid.trim(); // Get mailid from route params
