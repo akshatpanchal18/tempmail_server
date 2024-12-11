@@ -11,9 +11,14 @@ const addMessageToInbox = asyncHandler(async (req, res) => {
 
     // const eventData = req.body;
     const eventData = req.body['event-data'];
-    console.log(eventData);
+    // console.log(eventData);
     
-//     const { recipient='', sender='', "subject":sub='', 'body-plain': body='' } = eventData;
+    const { recipient, sender, "subject":sub='', 'stripped-text': body='' } = eventData;
+    console.log("To:",recipient);
+    console.log("from",sender);
+    console.log("Sub:",sub);
+    console.log("Body:",body);
+    
 
 //     if ([recipient, sender, sub,body].some((field) => !field?.trim())) {
 //         throw new apiError(400, "All fields are required");
