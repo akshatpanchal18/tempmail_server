@@ -7,7 +7,7 @@ import { Tempmail } from "../Models/email.models.js";
 
 const addMessageToInbox = asyncHandler(async (req, res) => {
 
-    const eventData = req.body['event-data'];
+    const eventData = req.body;
     const { recipient, sender, "subject":sub, 'body-plain': body } = eventData;
     // const {mailid, text, from, subject } = req.body;
     // const mailid = req.params.mailid.trim(); // Get mailid from route params
