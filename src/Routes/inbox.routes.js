@@ -5,7 +5,7 @@ import { deleteAllInbox, getInbox,addMessageToInbox, toggelRead, getInboxes} fro
 
 const router = Router()
 //create inbox
-router.route("/inbox-data/inbox").post(verifyJWT,addMessageToInbox)
+router.route("/inbox-data/inbox").post(addMessageToInbox)
 
 //get all inbox
 router.route("/inbox-data/mail/:mailid").get(verifyJWT,getInbox)
