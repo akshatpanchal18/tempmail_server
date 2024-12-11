@@ -10,10 +10,10 @@ const addMessageToInbox = asyncHandler(async (req, res) => {
 // console.log(req.body?.recipient);
 
     // const eventData = req.body;
-    const eventData = req.body['event-data'];
+    // const eventData = req.body['event-data'];
     // console.log(eventData);
     
-    const { recipient, sender, "subject":sub='', 'stripped-text': body='' } = eventData;
+    const { recipient, sender, "subject":sub='', 'stripped-text': body='' } = req.body;
     console.log("To:",recipient);
     console.log("from",sender);
     console.log("Sub:",sub);
