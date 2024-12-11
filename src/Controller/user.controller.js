@@ -128,10 +128,10 @@ const loginUser = asyncHandeler(async (req, res) => {
   );
 
   const options = {
-    httpOnly: true,
+    // httpOnly: true,
     // secure: true,
     // sameSite: 'None',
-    // secure: false,
+    secure: false,
   };
   // console.log("User logged in success");
   
@@ -166,10 +166,10 @@ const logoutUser = asyncHandeler(async (req, res) => {
     }
   );
   const options = {
-    httpOnly: true,
+    // httpOnly: true,
     // secure: true,
     // sameSite: 'None',
-    // secure: false,
+    secure: false,
   };
 
   return res
@@ -223,9 +223,9 @@ const refreshAccessToken = asyncHandeler(async (req, res) => {
     }
 
     const options = {
-      httpOnly: true,
+      // httpOnly: true,
       // secure: true,
-      // secure: false,
+      secure: false,
       // sameSite: 'None',
       
     };
