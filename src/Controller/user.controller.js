@@ -130,7 +130,7 @@ const loginUser = asyncHandeler(async (req, res) => {
   const options = {
     httpOnly: true,
     secure: true,
-    // sameSite: 'None',
+    sameSite: 'None',
     // secure: false,
   };
   // console.log("User logged in success");
@@ -167,9 +167,9 @@ const logoutUser = asyncHandeler(async (req, res) => {
   );
   const options = {
     httpOnly: true,
-    // secure: true,
+    secure: true,
     // sameSite: 'None',
-    // secure: false,
+    secure: false,
   };
 
   return res
@@ -226,7 +226,7 @@ const refreshAccessToken = asyncHandeler(async (req, res) => {
       httpOnly: true,
       secure: true,
       // secure: false,
-      // sameSite: 'None',
+      sameSite: 'None',
       
     };
     const { accessToken, newRefreshToken } = await genrateAccessAndRefreshToken(
