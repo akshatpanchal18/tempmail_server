@@ -7,55 +7,51 @@ import { Tempmail } from "../Models/email.models.js";
 
 const addMessageToInbox = asyncHandler(async (req, res) => {
 // console.log(req.body);
-console.log(req.body?.recipient);
-
-    // const eventData = req.body;
-    // const eventData = req.body['event-data'];
-    // console.log(eventData);
-    
+// console.log(req.body?.recipient);
     const { recipient, sender, "subject":sub='', 'stripped-text': body='' } = req.body;
-    console.log("To:",recipient);
-    console.log("from",sender);
-    console.log("Sub:",sub);
-    console.log("Body:",body);
+    // console.log("To:",recipient);
+    // console.log("from",sender);
+    // console.log("Sub:",sub);
+    // console.log("Body:",body);
     
 
-//     if ([recipient, sender, sub,body].some((field) => !field?.trim())) {
-//         throw new apiError(400, "All fields are required");
-//     }
+    if ([recipient, sender, sub,body].some((field) => !field?.trim())) {
+        throw new apiError(400, "All fields are required");
+    }
     
-//     const findEmail = await Tempmail.find({"tempEmail":recipient})
-//     const mailid = findEmail.length > 0 ? findEmail[0]._id : null
-//     const from = sender||"null";
-//     const subject = sub||"null";
-//     const text = body||"null";
-// console.log(mailid);
+    const findEmail = await Tempmail.find({"tempEmail":recipient})
+    const mailid = findEmail.length > 0 ? findEmail[0]._id : null
+    const from = sender||"null";
+    const subject = sub||"null";
+    const text = body||"null";
 
-//     console.log(`Received email from ${from} to ${recipient} with subject: ${subject}`);
+    console.log(mailid);
+    console.log(`Received email from ${from} to ${recipient} with subject: ${subject}`);
 
 
-//     // Validate required fields
-//     if ([text, from, subject].some((field) => !field?.trim())) {
-//         throw new apiError(400, "All fields are required");
-//     }
-//     // Validate mail ID
-//     if (!mailid) {
-//         throw new apiError(400, "Invalid mail ID");
-//     }
-//     const inbox = await Inbox.findOne({ "emailId":mailid });
-//     if (!inbox) {
-//         throw new apiError(404, "Inbox not found");
-//     }
+    // Validate required fields
+    if ([text, from, subject].some((field) => !field?.trim())) {
+        throw new apiError(400, "All fields are required");
+    }
+    // Validate mail ID
+    if (!mailid) {
+        throw new apiError(400, "Invalid mail ID");
+    }
+    const inbox = await Inbox.findOne({ "emailId":mailid });
+    if (!inbox) {
+        throw new apiError(404, "Inbox not found");
+    }
 
-//     inbox.messages.push({
-//         from,
-//         subject,
-//         text,
-//     })
-//     await inbox.save()
+    inbox.messages.push({
+        from,
+        subject,
+        text,
+    })
+    await inbox.save()
     console.log(`Received email`);
 
     // res.status(201).json(new apiResponse(201, inbox, "Inbox entry created successfully"));
+    res.status(201).json(new apiResponse(201,"Inbox entry created successfully"));
 });
 
 
