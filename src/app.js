@@ -5,12 +5,22 @@ import cookieParser from 'cookie-parser'
 const app = express()
 
 // cors for middelwares
-app.use(cors({
-    // origin:process.env.CORS_ORIGIN,
-    origin: "https://tempmail-3lr6.onrender.com", 
-    credentials:true,
+const allowedOrigins = [
+    'http://localhost:5173', // Local development
+    'https://tempmail-3lr6.onrender.com', // Deployed frontend
+];
 
-}))
+// CORS configuration
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true); // Allow the request
+        } else {
+            callback(new Error('Not allowed by CORS')); // Deny the request
+        }
+    },
+    credentials: true, // Allow cookies to be sent with requests
+}));
 // app.options('*', cors()); // Handle preflight requests for all routes
 
 app.use(express.json({limit:"16kb"}))
