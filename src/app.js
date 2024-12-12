@@ -7,7 +7,7 @@ const app = express()
 // cors for middelwares
 app.use(cors({
     // origin:process.env.CORS_ORIGIN,
-    origin: "http://localhost:5173", 
+    origin: "https://tempmail-3lr6.onrender.com", 
     credentials:true,
 
 }))

@@ -25,8 +25,8 @@ const addMessageToInbox = asyncHandler(async (req, res) => {
     const subject = sub||"null";
     const text = body||"null";
 
-    console.log(mailid);
-    console.log(`Received email from ${from} to ${recipient} with subject: ${subject}`);
+    // console.log(mailid);
+    // console.log(`Received email from ${from} to ${recipient} with subject: ${subject}`);
 
 
     // Validate required fields
@@ -48,7 +48,7 @@ const addMessageToInbox = asyncHandler(async (req, res) => {
         text,
     })
     await inbox.save()
-    console.log(`Received email`);
+    console.log(`Received email on ${recipient}`);
 
     // res.status(201).json(new apiResponse(201, inbox, "Inbox entry created successfully"));
     res.status(201).json(new apiResponse(201,"Inbox entry created successfully"));
@@ -96,29 +96,9 @@ const getInbox = asyncHandler(async (req,res) => {
     .json(new apiResponse(200,inbox,"Inbox found"))
     
 })
-// const getInboxes = asyncHandler(async (req,res) => {
-//     const {mailid}=req.body
-//     console.log(mailid);
-    
-//     // if(!mongoose.isValidObjectId(mailid)){
-//     //     throw new apiError(400,"inbox is requiered")
-//     // }
-//     // console.log(mailid);
-
-//     const inbox = await Inbox.findOne({ "emailId":mailid })
-//     // console.log(inbox)
-//     // if (!inbox) {
-//     //     throw new apiError(404, "Inbox not found");
-//     // }
-//     console.log("found inboxes:",inbox);
-//     res.status(200)
-//     .json(new apiResponse(200,inbox,"Inbox found"))
-    
-// })
-const getInboxes = async (req,res) => {
-    try {
-        const {mailid}=req.body
-    console.log(mailid);
+const getInboxes = asyncHandler(async (req,res) => {
+    const {mailid}=req.body
+    // console.log(mailid);
     
     // if(!mongoose.isValidObjectId(mailid)){
     //     throw new apiError(400,"inbox is requiered")
@@ -130,14 +110,13 @@ const getInboxes = async (req,res) => {
     // if (!inbox) {
     //     throw new apiError(404, "Inbox not found");
     // }
-    console.log("found inboxes:",inbox);
+    // console.log("found inboxes:",inbox);
+    console.log("inboxes Found");
     res.status(200)
     .json(new apiResponse(200,inbox,"Inbox found"))
-    } catch (error) {
-        console.log("error", error)
-    }
     
-}
+})
+
 const toggelRead = asyncHandler(async (req,res) => {
     const {inboxid} = req.body
     console.log(inboxid);

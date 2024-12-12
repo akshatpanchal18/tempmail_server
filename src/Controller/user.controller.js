@@ -70,11 +70,11 @@ const registerUser = asyncHandeler(async (req, res) => {
     throw new apiError(500, "Something went wrong while registering the user");
   }
    
-  const deleteTempUser = await Tempuser.deleteOne({"email":email})
-  if (!deleteTempUser) {
-    throw new apiError(400,"user not deleted from TempUsers")
-  }
-console.log(`Tempuser deleted ${email}`);
+//   const deleteTempUser = await Tempuser.deleteOne({"email":email})
+//   if (!deleteTempUser) {
+//     throw new apiError(400,"user not deleted from TempUsers")
+//   }
+// console.log(`Tempuser deleted ${email}`);
 console.log(`User created success`);
 
   return res

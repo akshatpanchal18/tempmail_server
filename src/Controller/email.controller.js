@@ -7,7 +7,7 @@ import apiResponse from "../Utils/apiResponse.js";
 const emailCreate = asyncHandeler(async(req,res)=>{
     const {tempEmail} = req.body;
     const userId = req.user._id;
-    console.log("c-email:",tempEmail,"loggedInUser:",userId);
+   //  console.log("c-email:",tempEmail,"loggedInUser:",userId);
     if(!userId){
         throw new apiError(400,"Please login before use service")
     }
@@ -32,7 +32,8 @@ const emailCreate = asyncHandeler(async(req,res)=>{
 
      newEmail.inbox = newInbox._id;
      await newEmail.save()
-     console.log("New Email Document:", newEmail);
+   //   console.log("New Email Document:", newEmail);
+     console.log("New Email created");
     
       return res
       .status(201)

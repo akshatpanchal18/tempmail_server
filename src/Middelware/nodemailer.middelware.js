@@ -25,8 +25,8 @@ const sendVerificationEmail = async (req, res, next) => {
   if (!email) {
     return res.status(400).json({ error: "Email is required" });
   }
-console.log("User email that otp ment to sent:",email);
-console.log("OTP that sent in email:", OTP);
+// console.log("User email that otp ment to sent:",email);
+// console.log("OTP that sent in email:", OTP);
 
   try {
     // Send email
@@ -49,14 +49,15 @@ console.log("OTP that sent in email:", OTP);
       httpOnly: true,
       secure: true,
       // secure: false,
-      // sameSite: 'None',
+      sameSite: 'None',
     };
 
-    console.log(`Email sent to: ${email} successfully ${OTP}`);
+    // console.log(`Email sent to: ${email} successfully ${OTP}`);
+    console.log(`Email sent to: ${email} successfully`);
     res.status(200)
     .cookie('refreshToken',user.refreshToken,options)
     .json(new apiResponse(201,"email sent successfully"))
-    console.log("cookie has been set");
+    // console.log("cookie has been set");
     
   } catch (error) {
     console.error("Error sending email:", error.message); // Log the full error

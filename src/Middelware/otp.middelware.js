@@ -5,24 +5,24 @@ import asyncHandeler from "../Utils/asyncHandeler.js";
 import jwt from 'jsonwebtoken'
 
 const verifyOtp = asyncHandeler(async (req, res, next) => {
-  console.log("Request body:", req.body);
+  // console.log("Request body:", req.body);
   const { otp } = req.body;
   const token = req.cookies?.refreshToken;
-  console.log("recived Token",token);
+  // console.log("recived Token",token);
   
 
   if (!otp || !token) {
     throw new apiError(400, "OTP and refresh token are required");
   }
 
-  console.log("OTP_SECRET:", process.env.OTP_REFRESH_TOKEN);
+  // console.log("OTP_SECRET:", process.env.OTP_REFRESH_TOKEN);
 
   try {
     const decoded = jwt.verify(token, process.env.OTP_REFRESH_TOKEN);
-    console.log("Decoded token:", decoded);
+    // console.log("Decoded token:", decoded);
 
     const email = decoded.email;
-    console.log("Extracted email:", email);
+    // console.log("Extracted email:", email);
 
     const user = await Tempuser.findOne({ email });
     if (!user) {

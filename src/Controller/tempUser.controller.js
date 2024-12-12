@@ -56,7 +56,7 @@ const registerTempUser = asyncHandler(async (req, res,next) => {
   tempUser.refreshToken = refreshToken;
   await tempUser.save({ validateBeforeSave: false });
 
-  // console.log("User created Successfully",tempUser);
+  console.log("User created Successfully");
   
   // Send success response
   // res.status(201)
