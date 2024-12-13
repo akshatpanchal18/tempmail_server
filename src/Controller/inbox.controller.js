@@ -6,7 +6,7 @@ import mongoose, { isValidObjectId } from "mongoose";
 import { Tempmail } from "../Models/email.models.js";
 
 const addMessageToInbox = asyncHandler(async (req, res) => {
-// console.log(req.body);
+console.log(req.body);
 // console.log(req.body?.recipient);
     const { recipient, sender, "subject":sub='', 'stripped-text': body='' } = req.body;
     // console.log("To:",recipient);
