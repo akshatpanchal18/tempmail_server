@@ -6,9 +6,9 @@ import mongoose, { isValidObjectId } from "mongoose";
 import { Tempmail } from "../Models/email.models.js";
 
 const addMessageToInbox = asyncHandler(async (req, res) => {
-console.log(req.body);
+console.log(req.body.From);
 // console.log(req.body?.recipient);
-    const { recipient, sender, "subject":sub='', 'stripped-text': body='' } = req.body;
+    const { recipient, From, "subject":sub='', 'stripped-text': body='' } = req.body;
     // console.log("To:",recipient);
     // console.log("from",sender);
     // console.log("Sub:",sub);
@@ -21,7 +21,7 @@ console.log(req.body);
     
     const findEmail = await Tempmail.find({"tempEmail":recipient})
     const mailid = findEmail.length > 0 ? findEmail[0]._id : null
-    const from = sender||"null";
+    const from = From||"null";
     const subject = sub||"null";
     const text = body||"null";
 
