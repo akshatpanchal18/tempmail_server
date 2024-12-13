@@ -8,15 +8,15 @@ import { Tempmail } from "../Models/email.models.js";
 const addMessageToInbox = asyncHandler(async (req, res) => {
 console.log(req.body.From);
 // console.log(req.body?.recipient);
-    const { recipient, From, "subject":sub='', 'stripped-text': body='','stripped-html':link } = req.body;
+    const { recipient, From, "subject":sub='', 'stripped-text': body='','body-plain':link } = req.body;
     // console.log("To:",recipient);
     // console.log("from",sender);
     // console.log("Sub:",sub);
     // console.log("Body:",body);
-    const parser = new DOMParser();
-const doc = parser.parseFromString(link, 'text/html');
-const links = [...doc.querySelectorAll('a')].map(link => link.href);
-console.log(links);
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    const extractedLinks = bodyPlain.match(urlRegex);
+    
+    console.log(extractedLinks);
 
 
     if ([recipient, From, sub,body].some((field) => !field?.trim())) {
