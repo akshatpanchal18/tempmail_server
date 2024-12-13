@@ -14,7 +14,7 @@ console.log(req.body.From);
     // console.log("Sub:",sub);
     // console.log("Body:",body);
     const urlRegex = /(https?:\/\/[^\s]+)/g;
-    const extractedLinks = bodyPlain.match(urlRegex);
+    const extractedLinks = link.match(urlRegex);
     
     console.log(extractedLinks);
 
