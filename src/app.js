@@ -19,6 +19,7 @@ app.use(cors({
             callback(new Error('Not allowed by CORS')); // Deny the request
         }
     },
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], 
     credentials: true, // Allow cookies to be sent with requests
 }));
 // app.options('*', cors()); // Handle preflight requests for all routes

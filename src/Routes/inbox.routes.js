@@ -8,7 +8,7 @@ const router = Router()
 router.route("/inbox-data/inbox").post(addMessageToInbox)
 
 //get all inbox
-router.route("/inbox-data/mail/:mailid").get(verifyJWT,getInbox)
+// router.route("/inbox-data/mail/:mailid").get(verifyJWT,getInbox)
 router.route("/inbox-data/mail/inboxes").post(verifyJWT,getInboxes)
 
 //isRead Toggel

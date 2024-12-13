@@ -97,23 +97,28 @@ const getInbox = asyncHandler(async (req,res) => {
     
 })
 const getInboxes = asyncHandler(async (req,res) => {
-    const {mailid}=req.body
-    // console.log(mailid);
+    try {
+        const {mailid}=req.body
+        // console.log(mailid);
+        
+        if(!mongoose.isValidObjectId(mailid)){
+            throw new apiError(400,"inbox is requiered")
+        }
+        // console.log(mailid);
     
-    // if(!mongoose.isValidObjectId(mailid)){
-    //     throw new apiError(400,"inbox is requiered")
-    // }
-    // console.log(mailid);
-
-    const inbox = await Inbox.findOne({ "emailId":mailid })
-    // console.log(inbox)
-    // if (!inbox) {
-    //     throw new apiError(404, "Inbox not found");
-    // }
-    // console.log("found inboxes:",inbox);
-    console.log("inboxes Found");
-    res.status(200)
-    .json(new apiResponse(200,inbox,"Inbox found"))
+        const inbox = await Inbox.findOne({ "emailId":mailid })
+        // console.log(inbox)
+        // if (!inbox) {
+        //     throw new apiError(404, "Inbox not found");
+        // }
+        // console.log("found inboxes:",inbox);
+        console.log("inboxes Found");
+        res.status(200)
+        .json(new apiResponse(200,inbox,"Inbox found"))
+    } catch (error) {
+        console.error("Error in getInboxes:", error);
+        res.status(500).json(new apiError(500,"Internal Server Error"));
+    }
     
 })
 
