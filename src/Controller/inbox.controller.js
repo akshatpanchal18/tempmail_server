@@ -15,7 +15,7 @@ console.log(req.body.From);
     // console.log("Body:",body);
     
 
-    if ([recipient, sender, sub,body].some((field) => !field?.trim())) {
+    if ([recipient, From, sub,body].some((field) => !field?.trim())) {
         throw new apiError(400, "All fields are required");
     }
     
