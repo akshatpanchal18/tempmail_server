@@ -19,10 +19,13 @@ app.use(cors({
             callback(new Error('Not allowed by CORS')); // Deny the request
         }
     },
+    allowedHeaders: ["Content-Type", "Authorization"], 
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], 
     credentials: true, // Allow cookies to be sent with requests
 }));
-// app.options('*', cors()); // Handle preflight requests for all routes
+app.options("*", (req, res) => {
+    res.sendStatus(200); // Send OK response
+  });
 
 app.use(express.json({limit:"16kb"}))
 

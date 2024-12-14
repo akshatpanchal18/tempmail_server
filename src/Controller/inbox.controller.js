@@ -15,8 +15,11 @@ console.log(req.body.From);
     // console.log("Body:",body);
     const urlRegex = /(https?:\/\/[^\s]+)/g;
     const extractedLinks = link.match(urlRegex);
+    const extractedText = body.replace(urlRegex, "");
     
     console.log(extractedLinks);
+    console.log(extractedText);
+    
 
 
     if ([recipient, From, sub,body].some((field) => !field?.trim())) {
@@ -27,7 +30,8 @@ console.log(req.body.From);
     const mailid = findEmail.length > 0 ? findEmail[0]._id : null
     const from = From||"null";
     const subject = sub||"null";
-    const text = body||"null";
+    const text = extractedText||"null";
+    const html = extractedLinks || "null";
 
     // console.log(mailid);
     // console.log(`Received email from ${from} to ${recipient} with subject: ${subject}`);
@@ -50,6 +54,7 @@ console.log(req.body.From);
         from,
         subject,
         text,
+        html,
     })
     await inbox.save()
     console.log(`Received email on ${recipient}`);
