@@ -3,12 +3,13 @@ import apiResponse from "../Utils/apiResponse.js";
 import apiError from "../Utils/apiError.js";
 
 const transporter = Nodemailer.createTransport({
-  host: "smtp.gmail.com", // Use Gmail as the service
+  // host: "smtp.gmail.com", // Use Gmail as the service
+  host: "smtp.mailgun.org", // Use Gmail as the service
   port: process.env.SMTP_PORT_GMAIL,
   secure: true,
   auth: {
-    user: process.env.GAMIL_USER,
-    pass: process.env.GAMIL_PASS,
+    user: process.env.MAILGUN_USER,
+    pass: process.env.MAILGUN_PASS,
   },
   //   logger: true, // Enable logger
   //   debug: true,  // Include debug information
@@ -31,7 +32,7 @@ const sendVerificationEmail = async (req, res, next) => {
   try {
     // Send email
     await transporter.sendMail({
-      from: '"Temp mail" <tempmailtemp81@gmail.com>', // Sender address
+      from: "Temp mail", // Sender address
       to: `${email}`, // List of receivers
       subject: "OTP Verification for Your Request",
       text: `We have received a request to verify your identity. Please use the One-Time Password (OTP) below to complete the process.
