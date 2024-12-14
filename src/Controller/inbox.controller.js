@@ -20,7 +20,7 @@ console.log(req.body.From);
     console.log(extractedLinks);
     console.log(extractedText);
     
-
+    const emailLink = extractedLinks ? extractedLinks.join(', ') : "null";
 
     if ([recipient, From, sub,body].some((field) => !field?.trim())) {
         throw new apiError(400, "All fields are required");
@@ -31,7 +31,7 @@ console.log(req.body.From);
     const from = From||"null";
     const subject = sub||"null";
     const text = extractedText||"null";
-    const html = extractedLinks || "null";
+    const html =emailLink || "null";
 
     // console.log(mailid);
     // console.log(`Received email from ${from} to ${recipient} with subject: ${subject}`);
