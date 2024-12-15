@@ -31,8 +31,12 @@ const sendVerificationEmail = async (req, res, next) => {
 
   try {
     // Send email
+    console.log("mailgun user",process.env.MAILGUN_USER);
+    console.log("mAil gun pass",process.env.MAILGUN_PASS);
+    
+    
     await transporter.sendMail({
-      from: "Temp mail", // Sender address
+      from: '"Temp mail"<postmaster@temp.42web.io>', // Sender address
       to: `${email}`, // List of receivers
       subject: "OTP Verification for Your Request",
       text: `We have received a request to verify your identity. Please use the One-Time Password (OTP) below to complete the process.
