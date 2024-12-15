@@ -169,6 +169,7 @@ const logoutUser = asyncHandeler(async (req, res) => {
     httpOnly: true,
     secure: true,
     sameSite: 'None',
+    path: '/',
     // secure: false,
   };
 
