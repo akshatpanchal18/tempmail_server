@@ -27,7 +27,7 @@ app.options("*", (req, res) => {
     res.sendStatus(200); // Send OK response
   });
 
-app.use(express.json({limit:"16kb"}))
+app.use(express.json({limit:"5mb"}))
 
 // url data fetchin /url encoder
 app.use(express.urlencoded({extended:true,limit:"16kb"}))
