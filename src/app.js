@@ -30,7 +30,7 @@ app.options("*", (req, res) => {
 app.use(express.json({limit:"5mb"}))
 
 // url data fetchin /url encoder
-app.use(express.urlencoded({extended:true,limit:"16kb"}))
+app.use(express.urlencoded({extended:true,limit:"5mb"}))
 
 
 //to store files
