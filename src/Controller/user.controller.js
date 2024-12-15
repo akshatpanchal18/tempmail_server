@@ -131,6 +131,7 @@ const loginUser = asyncHandeler(async (req, res) => {
     httpOnly: true,
     secure: true,
     sameSite: 'None',
+    path: '/',
     // secure: false,
   };
   // console.log("User logged in success");
