@@ -108,13 +108,15 @@ const loginUser = asyncHandeler(async (req, res) => {
   
 
   if (!user) {
-    throw new apiError(404, "User does not exist");
+    // throw new apiError(404, "User does not exist");
+    res.status(404).json(new apiError(404,"User does not exist"))
   }
 
   const isPasswordValid = await user.isPasswordCorrect(password);
 
   if (!isPasswordValid) {
-    throw new apiError(401, "Invalid user credentials");
+    // throw new apiError(401, "Invalid user credentials");
+    res.status(401).json(new apiError(401,"Incorrect Password"))
   }
   // console.log("passed user ID",user._id);
 

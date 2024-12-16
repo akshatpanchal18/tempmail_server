@@ -33,7 +33,8 @@ const registerTempUser = asyncHandler(async (req, res,next) => {
   // Check for existing user
   const existingUser = await Tempuser.findOne({ $or: [{ email }, { username }] });
   if (existingUser) {
-    throw new apiError(400, "Email or username already exists");
+    // throw new apiError(400, "Email or username already exists");
+    res.status(403).json(new apiError(403,"Email or username already exists"))
   }
 
   // Generate OTP

@@ -31,11 +31,13 @@ const verifyOtp = asyncHandeler(async (req, res, next) => {
     }
 
     if (user.otp !== parseInt(otp, 10)) {
-      throw new apiError(400, "Invalid OTP");
+      // throw new apiError(400, "Invalid OTP");
+      res.status(401).json(new apiError(401,"Invalid OTP"))
     }
 
     if (Date.now() > new Date(user.updatedAt).getTime() + 10 * 60 * 1000) {
-      throw new apiError(400, "OTP expired");
+      // throw new apiError(400, "OTP expired");
+      res.status(402).json(new apiError(402,"OTP expired"))
     }
 
     console.log("OTP verification success");

@@ -18,8 +18,8 @@ const transporter = Nodemailer.createTransport({
 const sendVerificationEmail = async (req, res, next) => {
   const OTP = req.otp;
   const user = req.user
-  console.log("user in nodemailer",user);
-  console.log("RefreshToken in nodemailer",user.refreshToken);
+  // console.log("user in nodemailer",user);
+  // console.log("RefreshToken in nodemailer",user.refreshToken);
   
   const { email } = req.body; // Get email details from the request body
 
@@ -31,17 +31,15 @@ const sendVerificationEmail = async (req, res, next) => {
 
   try {
     // Send email
-    console.log("mailgun user",process.env.MAILGUN_USER);
-    console.log("mAil gun pass",process.env.MAILGUN_PASS);
-    
-    
+    // console.log("mailgun user",process.env.MAILGUN_USER);
+    // console.log("mAil gun pass",process.env.MAILGUN_PASS);
     await transporter.sendMail({
       from: '"Temp mail"<postmaster@temp.42web.io>', // Sender address
       to: `${email}`, // List of receivers
       subject: "OTP Verification for Your Request",
       text: `We have received a request to verify your identity. Please use the One-Time Password (OTP) below to complete the process.
 
-      Your OTP: [${OTP}]
+    Your OTP: [ ${OTP} ]
 
     This OTP is valid for the next 10 minutes. Please do not share it with anyone to ensure the security of your account.
 
